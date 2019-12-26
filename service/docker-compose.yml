@@ -1,0 +1,34 @@
+version: "2"
+
+services:
+  globo-db:
+    build: .
+    container_name: globo-db
+    ports:
+      - "5432:5432"
+    volumes:
+      - ${PWD}/service/src/:/src/
+
+  globo-api:
+    build: ${PWD}/service/api/app/.
+    container_name: globo-api
+    ports:
+      - "5003:5003"
+    restart: always
+    links: 
+      - globo-db:globo-db
+    depends_on:
+      - globo-db
+
+  pgadmin:
+   image: fenglc/pgadmin4
+   container_name: globo-pgadmin
+   ports:
+     - "5050:5050"
+   environment:
+      PGADMIN_DEFAULT_EMAIL: "user@domain.com"
+      PGADMIN_DEFAULT_PASSWORD: "SuperSecret"
+   depends_on:
+     - globo-db
+   volumes:
+     - ${PWD}/service/pgadmin/pgadmin4.db:/var/lib/pgadmin/pgadmin4.db
