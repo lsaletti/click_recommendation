@@ -1,4 +1,4 @@
-## ***Desafio Big Data Globo***
+## ***Desafio Big Data***
 A proposta é não travar qual tecnologia deverá ser utilizada em cada layer, mas sim trazer um modelo que consiga atingir o máximo possível dos objetivos gerais de uma arquitetura de big data e garantir que o time de data engineer não seja focado na manutenção de estruturas, mas sim no processamento e transformação dos dados.
 
 ----------
